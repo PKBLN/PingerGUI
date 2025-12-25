@@ -1,0 +1,107 @@
+﻿<Window x:Class="PingerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PingerWPF"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <TabControl Margin="10">
+        <!-- Ping Tab -->
+        <TabItem Header="Ping">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                    <Label Content="Adresse:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="AddressTextBox" Width="300" Margin="10,0" VerticalAlignment="Center" Text="google.com"/>
+                    <Button x:Name="PingButton" Content="Ping" Width="75" Click="PingButton_Click" IsDefault="True"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" Text="Ergebnis:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="ResultTextBox" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontFamily="Consolas"/>
+            </Grid>
+        </TabItem>
+
+        <!-- IP-Scanner Tab -->
+        <TabItem Header="IP-Scanner">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                    <Label Content="Basis IP (z.B. 192.168.1):" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ScannerBaseIpTextBox" Width="150" Margin="10,0" VerticalAlignment="Center" Text="192.168.1"/>
+                    <Label Content="Start:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ScannerStartTextBox" Width="40" Margin="5,0" VerticalAlignment="Center" Text="1"/>
+                    <Label Content="Ende:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ScannerEndTextBox" Width="40" Margin="5,0" VerticalAlignment="Center" Text="254"/>
+                    <Button x:Name="ScanButton" Content="Scan" Width="75" Margin="10,0" Click="ScanButton_Click"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" Text="Scanner Ergebnisse:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="ScannerResultTextBox" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontFamily="Consolas"/>
+            </Grid>
+        </TabItem>
+
+        <!-- Traceroute Tab -->
+        <TabItem Header="Traceroute">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                    <Label Content="Ziel:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="TracerouteTargetTextBox" Width="300" Margin="10,0" VerticalAlignment="Center" Text="8.8.8.8"/>
+                    <Button x:Name="TracerouteButton" Content="Trace" Width="75" Click="TracerouteButton_Click"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" Text="Traceroute Log:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="TracerouteResultTextBox" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontFamily="Consolas" Height="100"/>
+
+                <GridSplitter Grid.Row="3" HorizontalAlignment="Stretch" Height="5" Background="Gray" Margin="0,5"/>
+
+                <TextBlock Grid.Row="3" Text="Hop-Details:" FontWeight="Bold" Margin="0,10,0,5" VerticalAlignment="Bottom"/>
+                <ListView x:Name="TracerouteVisualList" Grid.Row="4" Margin="0,5,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Hop" DisplayMemberBinding="{Binding Hop}" Width="40"/>
+                            <GridViewColumn Header="IP-Adresse" DisplayMemberBinding="{Binding Address}" Width="120"/>
+                            <GridViewColumn Header="Zeit (Lokal)" DisplayMemberBinding="{Binding Time}" Width="100"/>
+                            <GridViewColumn Header="Zeit (Netz)" DisplayMemberBinding="{Binding NetTime}" Width="80"/>
+                            <GridViewColumn Header="Standort / ISP" DisplayMemberBinding="{Binding Geo}" Width="350"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </TabItem>
+
+        <!-- Weltkarte Tab -->
+        <TabItem Header="Weltkarte">
+            <Grid Background="#f0f0f0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <wv2:WebView2 x:Name="MapWebView" Grid.Row="0" Margin="5"/>
+                
+                <TextBlock Grid.Row="1" Text="Hinweis: Standorte basieren auf Geo-IP Daten und nutzen OpenStreetMap via Leaflet." 
+                           HorizontalAlignment="Center" Margin="5" Foreground="Gray" FontSize="10"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
