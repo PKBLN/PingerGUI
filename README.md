@@ -19,7 +19,10 @@ PingerWPF is a lightweight Windows desktop application built with WPF and .NET 1
 
 ### Screenshots
 
-*(Add screenshots here)*
+<img width="643" height="343" alt="grafik" src="https://github.com/user-attachments/assets/fd725103-91a5-4a60-8276-f892fda672e6" />
+<img width="832" height="261" alt="grafik" src="https://github.com/user-attachments/assets/f47348e2-093c-4afa-9a1f-e91ba36dc963" />
+<img width="968" height="530" alt="grafik" src="https://github.com/user-attachments/assets/7833ebf4-5eeb-40d8-9d06-0c95ca19b092" />
+<img width="953" height="500" alt="grafik" src="https://github.com/user-attachments/assets/e9e3849d-5864-434f-8be5-00428026602a" />
 
 ### Technologies Used
 
@@ -84,7 +87,10 @@ PingerWPF ist eine leichtgewichtige Windows-Desktop-Anwendung, die mit WPF und .
 
 ### Screenshots
 
-*(Screenshots hier einfügen)*
+<img width="643" height="343" alt="grafik" src="https://github.com/user-attachments/assets/fd725103-91a5-4a60-8276-f892fda672e6" />
+<img width="832" height="261" alt="grafik" src="https://github.com/user-attachments/assets/f47348e2-093c-4afa-9a1f-e91ba36dc963" />
+<img width="968" height="530" alt="grafik" src="https://github.com/user-attachments/assets/7833ebf4-5eeb-40d8-9d06-0c95ca19b092" />
+<img width="953" height="500" alt="grafik" src="https://github.com/user-attachments/assets/e9e3849d-5864-434f-8be5-00428026602a" />
 
 ### Verwendete Technologien
 
@@ -131,3 +137,4 @@ Dieses Projekt ist unter der MIT-Lizenz lizenziert – siehe die [LICENSE](LICEN
 - [Leaflet](https://leafletjs.com/) für die interaktiven Karten.
 - [OpenStreetMap](https://www.openstreetmap.org/) für Kartendaten.
 - [ip-api.com](https://ip-api.com/) für den kostenlosen Geo-IP-Service.
+
